@@ -1,0 +1,71 @@
+$('#ruler-bottom').detectPixelRatio(function(ratio) {
+  // $('#ruler-bottom').drawLine({
+  //   strokeStyle: '#000',
+  //   strokeWidth: 1,
+  //   x1: 1, y1: 0,
+  //   x2: 1, y2: 10
+  // });
+  // $('#ruler-bottom').drawText({
+  //     fillStyle: '#000',
+  //     strokeWidth: 1,
+  //     x: 5, y: 17,
+  //     fontSize: 11,
+  //     fontFamily: 'Verdana, sans-serif',
+  //     text: '0'
+  // });
+
+  var numberOfTicks = Math.floor(that.config.widthRange.to/50);
+  var tickOffSet = Math.floor($("#outer").width()/numberOfTicks);
+  var padding = 7;
+
+  for (var i = 0; i < numberOfTicks; i++) {
+    var offset = i*tickOffSet;
+    $('#ruler-bottom').drawLine({
+      strokeStyle: '#000',
+      strokeWidth: 1,
+      x1: offset, y1: 0,
+      x2: offset, y2: 10
+    });
+    $('#ruler-bottom').drawText({
+        fillStyle: '#000',
+        strokeWidth: 1,
+        x: offset+padding, y: 17,
+        fontSize: 11,
+        fontFamily: 'Verdana, sans-serif',
+        text: i*50
+    });
+  }
+
+  $('#ruler-bottom').drawLine({
+    strokeStyle: '#000',
+    strokeWidth: 1,
+    x1: $('#ruler-bottom').width(), y1: 0,
+    x2: $('#ruler-bottom').width(), y2: 10
+  });
+});
+
+$('#ruler-left').detectPixelRatio(function(ratio) {
+  var numberOfTicks = Math.floor(that.config.heightRange.to/50);
+  var tickOffSet = Math.floor($("#outer").height()/numberOfTicks);
+
+  $('#ruler-left').drawLine({
+    strokeStyle: '#000',
+    strokeWidth: 1,
+    x1: $('#ruler-left').width(), y1: $('#ruler-left').height()-1,
+    x2: $('#ruler-left').width()-10, y2: $('#ruler-left').height()-1
+  });
+  $('#ruler-left').drawText({
+      fillStyle: '#000',
+      strokeWidth: 1,
+      x: $('#ruler-left').width()-11, y: $('#ruler-left').height()-6,
+      fontSize: 11,
+      fontFamily: 'Verdana, sans-serif',
+      text: '0'
+  });
+  $('#ruler-left').drawLine({
+    strokeStyle: '#000',
+    strokeWidth: 1,
+    x1: $('#ruler-left').width(), y1: 0,
+    x2: $('#ruler-left').width()-10, y2: 0
+  });
+});

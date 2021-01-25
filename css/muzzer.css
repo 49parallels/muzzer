@@ -1,0 +1,373 @@
+/*!
+    Theme Name: muzzerTheme,
+    Version: 1.0
+*/
+/* * {
+  outline: 1px solid red;
+} */
+
+#muzzer {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#muzzer-control {
+
+}
+
+#outer {
+  width: 80%;
+  height: 93%;
+  margin-left: 40px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  position: relative;
+  border: none;
+  z-index: 1;
+}
+
+#inner {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  bottom: 0px;
+  border-bottom: none;
+  border-left: none;
+  border-right: 1px dashed black;
+  border-top: 1px dashed black;
+  background: rgba(0, 0, 0, 0.0);
+}
+
+#muzzer-ruler-horizontal {
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-family: monospace;
+  font-size: 7px;
+  border-top: 1px solid black;
+}
+
+#muzzer-ruler-horizontal td {
+  padding: 0px;
+  margin: 0px;
+  height: 10px;
+  border-right: 1px solid black;
+}
+
+#muzzer-ruler-horizontal td.unit {
+  padding: 0px;
+  margin: 0px;
+  height: 10px;
+  border: 0px;
+}
+
+
+#muzzer-ruler-vertical {
+  position: relative;
+  float: right;
+  width: 35px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-family: monospace;
+  font-size: 7px;
+  border-right: 1px solid black;
+  margin-top: 1px;
+}
+
+#muzzer-ruler-vertical td {
+  padding: 0px;
+  margin: 0px;
+  width: 20px;
+  border-top: 1px solid black;
+}
+
+#muzzer-ruler-vertical td.unit {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+  vertical-align: top;
+  text-align: right;
+}
+
+#ruler-left {
+  position: relative;
+  width: 40px;
+  height: 40.5%;
+  float: left;
+  padding: 0px;
+  z-index: 5;
+}
+
+#ruler-bottom {
+  position: relative;
+  width: 80%;
+  height: 40px;
+  margin-left: 0px;
+  margin-left: 39px;
+  padding: 0px;
+  z-index: 5;
+}
+
+#parameters {
+  margin: 0 auto;
+  width: 400px;
+  margin-top: 10px;
+  margin-left: -20px;
+  transform: scale(0.7);
+}
+
+#parameters span {
+  font-family: inherit;
+  font-weight: bold;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#parameters span.unit {
+  font-family: inherit;
+  font-weight: normal;
+  padding-left: 5px;
+  padding-right: 20px;
+  display: inline-block;
+}
+
+#parameters input[type=text] {
+  max-width: 50px;
+  max-height: 18px;
+  text-align: center;
+  border-radius: 30px;
+}
+
+#handle_graphics {
+  height: 20px;
+  width: 20px;
+  background-color: grey;
+  padding: 4px;
+}
+
+#handle_graphics img {
+  width: 100%;
+}
+
+#closest_item {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  position: relative;
+  z-index: -1;
+  text-align: center;
+}
+
+ #closest_item img {
+     max-height: 100%;
+     max-width: 100%;
+     width: auto;
+     height: auto;
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     margin: auto;
+}
+
+.ui-resizable-ne {
+  width: 28px;
+  height: 28px;
+  top: -14px;
+  right: -14px;
+  background-color: #fff;
+  /*background-image: url('data:image/png;base64,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');*/
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  border: 1px solid black;
+  z-index: 666;
+}
+
+/* #muzzer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 5px;
+} */
+
+div#size {
+  padding-top: 30px;
+  border: 1px solid #fff;
+  height: 200px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+
+
+div#price {
+  border: 1px solid #fff;
+  height: 100px;
+  position: relative;
+  top: 50px;
+}
+
+div#range_from {
+  position: absolute;
+  left: 30px; top: 30px;
+  text-align: right;
+}
+
+div#range_to {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+}
+
+div#price #slider-range {
+  margin: 0 30px;
+  height: 2px;
+}
+
+div#price_wrap {
+  position: absolute;
+  top: 20%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+}
+
+.muzzer-slider {
+  background-color: #000;
+  color: #000;
+}
+
+.ui-slider-handle .muzzer-slider-handle {
+  background: #000;
+}
+
+.muzzer-slider-range {
+  background-color: #000;
+  color: #000;
+  height: 2px;
+}
+
+.muzzer-slider-handle {
+  top: -8px;
+}
+
+.item-detail-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.item-detail-description {
+
+}
+
+@keyframes fadeInEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+
+.ruler, .ruler li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+/* IE6-7 Fix */
+.ruler, .ruler li {
+    *display: inline;
+}
+.ruler {
+    background: lightYellow;
+    box-shadow: 0 -1px 1em hsl(60, 60%, 84%) inset;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    color: #ccc;
+    margin: 0;
+    height: 3em;
+    padding-right: 1cm;
+    white-space: nowrap;
+}
+.ruler li {
+    padding-left: 1cm;
+    width: 2em;
+    margin: .64em -1em -.64em;
+    text-align: center;
+    position: relative;
+    text-shadow: 1px 1px hsl(60, 60%, 84%);
+}
+.ruler li:before {
+    content: '';
+    position: absolute;
+    border-left: 1px solid #ccc;
+    height: .64em;
+    top: -.64em;
+    right: 1em;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  /*border: 1px solid #ccc;*/
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: 1px;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  color: #000;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Style the tab content */
+div .tabcontent {
+  display: none;
+  border: none;
+
+}
+
+.tabcontent {
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@media screen and (min-width: 600px)
+{
+  #muzzer {
+    width: 60%;
+  }
+
+  div#size {
+    padding-right: 50px;
+  }
+
+  #parameters {
+    transform: scale(1.0);
+    margin-left: 39px;
+    width: 100%;
+  }
+}

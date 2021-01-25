@@ -1,0 +1,229 @@
+{
+   "SHOPITEM": [
+      {
+         "ITEM_ID": "168820",
+         "PRODUCTNAME": [
+            "MUZZA ŽIDLE LENA PŘÍRODNÍ"
+         ],
+         "PRODUCT": "MUZZA ŽIDLE LENA PŘÍRODNÍ",
+         "DESCRIPTION": "V roce 2000 založila kreativní ředitelka Betina Stampe společnost Bloomingville. Od té doby sdílí své nadšení pro tvůrčí způsoby, jak udržet domov v režimu neustálé změny s lidmi po celém světě. Bloomingville se za posledních 15 let rozrostla do jedné z hlavních světových značek pro domácí interiéry.",
+         "URL": "https://www.muzza.cz/product/zidle-lena-prirodni/",
+         "IMGURL": "https://www.muzza.cz/wp-content/uploads/2020/10/23002951_01.jpg",
+         "IMGURL_ALTERNATIVE": [
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002951_01.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002951_high.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002951_02.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002951_03.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002951_04.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002951_high-2.jpg"
+         ],
+         "PRICE_VAT": "8372",
+         "MANUFACTURER": "Bloomingville",
+"WIDTH": 150,
+"HEIGHT": 120,
+
+         "CATEGORYTEXT": "Jídelní židle",
+         "PRODUCTNO": "23002951",
+         "PARAM": [
+            {
+               "PARAM_NAME": "Barva",
+               "VAL": [
+                  "Přírodní"
+               ]
+            },
+            {
+               "PARAM_NAME": "Styl",
+               "VAL": [
+                  "Moderní",
+                  "Retro",
+                  "Vintage"
+               ]
+            }
+         ]
+      },
+      {
+         "ITEM_ID": "168821",
+         "PRODUCTNAME": [
+            "MUZZA ŽIDLE LENA ČERNÁ"
+         ],
+         "PRODUCT": "MUZZA ŽIDLE LENA ČERNÁ",
+         "DESCRIPTION": "V roce 2000 založila kreativní ředitelka Betina Stampe společnost Bloomingville. Od té doby sdílí své nadšení pro tvůrčí způsoby, jak udržet domov v režimu neustálé změny s lidmi po celém světě. Bloomingville se za posledních 15 let rozrostla do jedné z hlavních světových značek pro domácí interiéry.",
+         "URL": "https://www.muzza.cz/product/zidle-lena-cerna/",
+         "IMGURL": "https://www.muzza.cz/wp-content/uploads/2020/10/23002952_01.jpg",
+         "IMGURL_ALTERNATIVE": [
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002952_01.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002951_high.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002952_02.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002952_03.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/23002952_04.jpg"
+         ],
+         "PRICE_VAT": "8372",
+         "MANUFACTURER": "Bloomingville",
+"WIDTH": 200,
+"HEIGHT": 100,
+
+         "CATEGORYTEXT": "Jídelní židle",
+         "PRODUCTNO": "23002952",
+         "PARAM": [
+            {
+               "PARAM_NAME": "Barva",
+               "VAL": [
+                  "Černá"
+               ]
+            },
+            {
+               "PARAM_NAME": "Styl",
+               "VAL": [
+                  "Moderní",
+                  "Retro",
+                  "Vintage"
+               ]
+            }
+         ]
+      },
+      {
+         "ITEM_ID": "168822",
+         "PRODUCTNAME": [
+            "MUZZA KVĚTINÁČ ZLATÝ BLOO Ø13.5 x V15 cm"
+         ],
+         "PRODUCT": "MUZZA KVĚTINÁČ ZLATÝ BLOO",
+         "DESCRIPTION": "V roce 2000 založila kreativní ředitelka Betina Stampe společnost Bloomingville. Od té doby sdílí své nadšení pro tvůrčí způsoby, jak udržet domov v režimu neustálé změny s lidmi po celém světě. Bloomingville se za posledních 15 let rozrostla do jedné z hlavních světových značek pro domácí interiéry.",
+         "URL": "https://www.muzza.cz/product/kvetinac-zlaty-bloo/",
+         "IMGURL": "https://www.muzza.cz/wp-content/uploads/2020/10/48400009_01.jpg",
+         "IMGURL_ALTERNATIVE": [
+            "https://www.muzza.cz/wp-content/uploads/2020/10/48400009_01.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/48400009_02.jpg"
+         ],
+         "PRICE_VAT": "868",
+         "MANUFACTURER": "Bloomingville",
+"WIDTH": 194,
+"HEIGHT": 67,
+
+         "CATEGORYTEXT": "Kuchyňské doplňky | Květináče",
+         "PRODUCTNO": "48400009",
+         "PARAM": [
+            {
+               "PARAM_NAME": "Barva",
+               "VAL": [
+                  "Zlatá"
+               ]
+            },
+            {
+               "PARAM_NAME": "Styl",
+               "VAL": [
+                  "Moderní"
+               ]
+            }
+         ]
+      },
+      {
+         "ITEM_ID": "168823",
+         "PRODUCTNAME": [
+            "MUZZA KONFERENČNÍ STOLEK CUBE 50 X 50 ČERNÝ"
+         ],
+         "PRODUCT": "MUZZA KONFERENČNÍ STOLEK CUBE 50 X 50 ČERNÝ",
+         "DESCRIPTION": "V roce 2000 založila kreativní ředitelka Betina Stampe společnost Bloomingville. Od té doby sdílí své nadšení pro tvůrčí způsoby, jak udržet domov v režimu neustálé změny s lidmi po celém světě. Bloomingville se za posledních 15 let rozrostla do jedné z hlavních světových značek pro domácí interiéry.",
+         "URL": "https://www.muzza.cz/product/konferencni-stolek-cube-50-x-50-cerny/",
+         "IMGURL": "https://www.muzza.cz/wp-content/uploads/2020/10/48400018_01.jpg",
+         "IMGURL_ALTERNATIVE": [
+            "https://www.muzza.cz/wp-content/uploads/2020/10/48400018_01.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/48400018_02.jpg"
+         ],
+         "PRICE_VAT": "5852",
+         "MANUFACTURER": "Bloomingville",
+"WIDTH": 100,
+"HEIGHT": 100,
+
+         "CATEGORYTEXT": "Konferenční a odkládací stolky",
+         "PRODUCTNO": "48400018",
+         "PARAM": [
+            {
+               "PARAM_NAME": "Barva",
+               "VAL": [
+                  "Černá"
+               ]
+            },
+            {
+               "PARAM_NAME": "Styl",
+               "VAL": [
+                  "Moderní"
+               ]
+            }
+         ]
+      },
+      {
+         "ITEM_ID": "168824",
+         "PRODUCTNAME": [
+            "MUZZA ODKLÁDACÍ STOLEK CUBE 25 X 25 ZLATÝ"
+         ],
+         "PRODUCT": "MUZZA ODKLÁDACÍ STOLEK CUBE 25 X 25 ZLATÝ",
+         "DESCRIPTION": "V roce 2000 založila kreativní ředitelka Betina Stampe společnost Bloomingville. Od té doby sdílí své nadšení pro tvůrčí způsoby, jak udržet domov v režimu neustálé změny s lidmi po celém světě. Bloomingville se za posledních 15 let rozrostla do jedné z hlavních světových značek pro domácí interiéry.",
+         "URL": "https://www.muzza.cz/product/odkladaci-stolek-cube-25-x-25-zlaty/",
+         "IMGURL": "https://www.muzza.cz/wp-content/uploads/2020/10/48400019_01.jpg",
+         "IMGURL_ALTERNATIVE": [
+            "https://www.muzza.cz/wp-content/uploads/2020/10/48400019_01.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/48400019_03.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/48400019_02.jpg"
+         ],
+         "PRICE_VAT": "4452",
+         "MANUFACTURER": "Bloomingville",
+"WIDTH": 140,
+"HEIGHT": 190,
+
+         "CATEGORYTEXT": "Konferenční a odkládací stolky",
+         "PRODUCTNO": "48400019",
+         "PARAM": [
+            {
+               "PARAM_NAME": "Barva",
+               "VAL": [
+                  "Zlatá"
+               ]
+            },
+            {
+               "PARAM_NAME": "Styl",
+               "VAL": [
+                  "Moderní"
+               ]
+            }
+         ]
+      },
+      {
+         "ITEM_ID": "168826",
+         "PRODUCTNAME": [
+            "MUZZA POHOVKA STAY"
+         ],
+         "PRODUCT": "MUZZA POHOVKA STAY",
+         "DESCRIPTION": "V roce 2000 založila kreativní ředitelka Betina Stampe společnost Bloomingville. Od té doby sdílí své nadšení pro tvůrčí způsoby, jak udržet domov v režimu neustálé změny s lidmi po celém světě. Bloomingville se za posledních 15 let rozrostla do jedné z hlavních světových značek pro domácí interiéry.",
+         "URL": "https://www.muzza.cz/product/pohovka-stay/",
+         "IMGURL": "https://www.muzza.cz/wp-content/uploads/2020/10/50141602_01.jpg",
+         "IMGURL_ALTERNATIVE": [
+            "https://www.muzza.cz/wp-content/uploads/2020/10/50141602_01.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/50141602_02.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/50141602_03.jpg",
+            "https://www.muzza.cz/wp-content/uploads/2020/10/50141602_04.jpg"
+         ],
+         "PRICE_VAT": "53772",
+         "MANUFACTURER": "Bloomingville",
+"WIDTH": 250,
+"HEIGHT": 87,
+
+         "CATEGORYTEXT": "Pohovky | Třímístné pohovky",
+         "PRODUCTNO": "50141602",
+         "PARAM": [
+            {
+               "PARAM_NAME": "Barva",
+               "VAL": [
+                  "Šedá"
+               ]
+            },
+            {
+               "PARAM_NAME": "Styl",
+               "VAL": [
+                  "Moderní",
+                  "Skandinávský"
+               ]
+            }
+         ]
+      }
+   ]
+}

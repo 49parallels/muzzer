@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Muzza sizer</title>
+  <meta name="description" content="Muzza sizer">
+  <meta name="author" content="E.D.Neutrum">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.muzza.sk/wp-content/themes/elessi-theme/style.css?ver=5.6">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script>
+  <script src="https://www.jsviews.com/download/jsrender.min.js"></script>
+  <link rel="stylesheet" href="css/muzzer.css?v=1.0">
+  <script src="js/throttle.js"></script>
+  <script src="js/muzzer.js"></script>
+  <!-- <script>
+  jQuery(document).ready(function($) {
+      var Muzzer = new $.Muzzer("#muzzer");
+      var config = {
+        item: `<li class="product-warp-item nasa-ver-buttons">
+              <div class="product type-product purchasable product-type-simple product-item grid wow fadeInUp hover-fade" data-wow="fadeInUp" data-wow-duration="1s" data-wow-delay="0ms">
+                <div class="product-img-wrap">
+                  <a class="product-img" href="{{:URL}}" title="{{:PRODUCT}}">
+                    <div class="main-img">
+                      <img width="650" height="522" src="{{:IMGURL}}" class="attachment-shop_catalog size-shop_catalog">
+                    </div>
+                  </a>
+                </div>
+                <div class="product-info-wrap info">
+                  <a class="name" href="{{:URL}}" title="{{:PRODUCT}}">{{:PRODUCT}}</a>
+                <div class="price-wrap">
+                  <span class="price">
+                    <span class="woocommerce-Price-amount amount"><bdi>
+                    <span class="woocommerce-Price-currencySymbol">&euro;</span>&nbsp;{{:PRICE_VAT}}</bdi>
+                  </span></span>
+                </div>
+      </div>
+   </div>
+</li>`, // Item template with respective placeholders to bind to json
+        priceRange: {from: 2000, to: 100000}, // range of possible values for price
+        widthRange: {from: 50, to: 400}, // range of possible values for width
+        heightRange: {from: 50, to: 100}, // range of possible values for height
+        customGrid: false, // if true you can drop any element with id: "grid" that will be used as result list
+        default: {w: 150, h: 100}, // default values for init data load
+        imageMinWidth: 150 // minimum allowed image width
+      }
+      Muzzer.init(config); // start
+      });
+  </script> -->
+</head>
+
+<body>
+<div id="muzzer"/>
+
+</body>
+</html>
