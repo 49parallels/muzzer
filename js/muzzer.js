@@ -54,7 +54,8 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         customGrid: false,
         default: {w: 200, h: 200},
         defaultMobile: {w: 200, h: 200},
-        imageMinWidth: 100
+        imageMinWidth: 100,
+        baseUrl: "https://sajzer.muzza.cz/items"
       },
 
       vars: {
@@ -179,7 +180,6 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
       triggerEvent: function(id) {
         switch(id) {
           case "size":
-            console.log($("#outer").innerWidth())
             if (this.state.firstElement) {
               var firstItem = this.state.firstElement
               this.initDefaults(firstItem.length, firstItem.height)
@@ -210,8 +210,8 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         if (id == "size") {
           $("#inner").resizable({
             resize: function(event, ui) {
-              that.executeSizer();
-              that.loadClosestItem();
+                that.executeSizer();
+                that.debouncedLoadFirstItem();
             },
             // stop: function(event, ui) {
             //   that.executeSizer(false);
@@ -232,9 +232,6 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
           });
 
           that.setupRulers();
-          // $("#m_width, #m_height").on('propertychange change input',function(e){
-          //   that.updateInputs();
-          // });
         }
 
         if (id == "price") {
@@ -292,39 +289,43 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         this.setupDefaults()
       },
       loadData: function(isInit) {
-        // test do not delete
-        if (this.state.currentCall) {
-          this.state.currentCall.abort();
-        }
-
-        if (isInit) {
-          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-              this.initDefaults(this.config.defaultMobile.w, this.config.defaultMobile.h)
-          } else {
-              this.initDefaults(this.config.default.w, this.config.default.h)
+          // test do not delete
+          if (this.state.currentCall) {
+            this.state.currentCall.abort();
           }
-          $("#muzzer-grid").html()
-          $(".tab button").first().addClass("active");
-        }
 
-        var url = "https://sajzer.muzza.cz/pohovky?_page="+this.vars.page+"&_limit=15&_sort=length,height,price&_order=desc&length_lte="+this.vars.selectedSize.x+"&height_lte="+this.vars.selectedSize.y+"&price_lte="+this.vars.selectedPrice.to+"&price_gte="+this.vars.selectedPrice.from;
-        var that = this;
-        this.state.currentCall = $.getJSON( url, {
-          format: "json"
-        }, function(data) {
-          if(!data.length) return;
-          that.state.firstElement = data[0]
-          var template = $.templates(that.config.item);
-          $.each(data, function(index, object) {
-            object.price = that.formatPrice(object.price);
-            var itemHtml = template.render(object);
-            $("#muzzer-grid").append(itemHtml);
+          if (isInit) {
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                this.initDefaults(this.config.defaultMobile.w, this.config.defaultMobile.h)
+            } else {
+                this.initDefaults(this.config.default.w, this.config.default.h)
+            }
+            $("#muzzer-grid").html()
+            $(".tab button").first().addClass("active");
+          }
+
+          var url = this.config.baseUrl+"?_page="+this.vars.page+"&_limit=15&_sort=length,height,price&_order=desc&length_lte="+this.vars.selectedSize.x+"&height_lte="+this.vars.selectedSize.y+"&price_lte="+this.vars.selectedPrice.to+"&price_gte="+this.vars.selectedPrice.from;
+          var that = this;
+          // test do not delete
+          this.state.currentCall = $.getJSON( url, {
+            format: "json"
+          }, function(data) {
+            if(!data.length) return;
+            that.state.firstElement = data[0]
+            var template = $.templates(that.config.item);
+            $.each(data, function(index, object) {
+              object.price = that.formatPrice(object.price);
+              var itemHtml = template.render(object);
+              $("#muzzer-grid").append(itemHtml);
+            });
+            that.state.lastElement = false
           });
-          that.state.lastElement = false
-        });
+      },
+      debouncedLoadFirstItem: function() {
+        this.loadClosestItem()
       },
       loadClosestItem: function() {
-        var url = "https://sajzer.muzza.cz/pohovky?_page=1&_limit=1&_sort=length,height,price&_order=desc&length_lte="+this.vars.selectedSize.x+"&height_lte="+this.vars.selectedSize.y+"&price_lte="+this.vars.selectedPrice.to+"&price_gte="+this.vars.selectedPrice.from;
+        var url = this.config.baseUrl+"?_page=1&_limit=1&_sort=length,height,price&_order=desc&length_lte="+this.vars.selectedSize.x+"&height_lte="+this.vars.selectedSize.y+"&price_lte="+this.vars.selectedPrice.to+"&price_gte="+this.vars.selectedPrice.from;
         var that = this;
         $.getJSON( url, {
           format: "json"
@@ -369,17 +370,23 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
           }
           return x1 + x2;
       },
-      throttle: function(fn, delay) {
-        let scheduledId
-        return function throttled() {
-            const context = this
-            const args = arguments
-            const throttledCall = fn.apply(context, args)
-            if (scheduledId) return
-            scheduledId = setTimeout(() => {
-                throttledCall()
-                clearTimeout(scheduledId)
-            }, delay)
+      debounce: function (func, timeout = 300){
+          let timer;
+          return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => { func.apply(this, args); }, timeout);
+          };
+      },
+      throttle: function(callback, limit) {
+        var waiting = false;                      // Initially, we're not waiting
+        return function () {                      // We return a throttled function
+            if (!waiting) {                       // If we're not waiting
+                callback.apply(this, arguments);  // Execute users function
+                waiting = true;                   // Prevent future invocations
+                setTimeout(function () {          // After a period of time
+                    waiting = false;              // And allow future invocations
+                }, limit);
+            }
         }
       }
     }
@@ -412,7 +419,7 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         heightRange: {from: 50, to: 100}, // range of possible values for height
         customGrid: false, // if true you can drop any element with id: "grid" that will be used as result list
         default: {w: 246, h: 100}, // default values for init data load
-        defaultMobile: {w: 246, h: 100},
+        defaultMobile: {w: 277, h: 80},
         imageMinWidth: 100 // minimum allowed image width
       }
       var Muzzer = new $.Muzzer("#muzzer", config);
