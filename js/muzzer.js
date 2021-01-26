@@ -1,6 +1,7 @@
 jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
     $.Muzzer = function(element) {
         this.element = (element instanceof $) ? element : $(element);
+        this.init(config)
     }
 
     $.Muzzer.prototype =  {
@@ -52,6 +53,7 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         item: "",
         customGrid: false,
         default: {w: 200, h: 200},
+        defaultMobile: {w: 200, h: 200},
         imageMinWidth: 100
       },
 
@@ -64,7 +66,8 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
       },
       state: {
         lastElement: false,
-        currentCall: null
+        currentCall: null,
+        firstElement: null,
       },
       /**
         Build tabs as dom
@@ -169,8 +172,25 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
       /** open tab event **/
       openTab: function(currentTab) {
           $(".tabContent").hide();
-          var tabId = "div#"+$(currentTab).attr("id");
+          var tabId = "div#"+$(currentTab).attr("id")
           $(tabId).show();
+          this.triggerEvent($(currentTab).attr("id"))
+      },
+      triggerEvent: function(id) {
+        switch(id) {
+          case "size":
+            console.log($("#outer").innerWidth())
+            if (this.state.firstElement) {
+              var firstItem = this.state.firstElement
+              this.initDefaults(firstItem.length, firstItem.height)
+              this.updateClosestItem(firstItem.image)
+              this.state.firstElement = null
+            }
+            break;
+          case "price":
+
+            break;
+        }
       },
       executeSizer: function() {
         this.vars.page = 1;
@@ -271,13 +291,18 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         $("#m_height").val(height)
         this.setupDefaults()
       },
-      loadData: function(isInit, updateSizer) {
+      loadData: function(isInit) {
         // test do not delete
         if (this.state.currentCall) {
           this.state.currentCall.abort();
         }
+
         if (isInit) {
-          this.initDefaults(this.config.default.w, this.config.default.h)
+          if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+              this.initDefaults(this.config.defaultMobile.w, this.config.defaultMobile.h)
+          } else {
+              this.initDefaults(this.config.default.w, this.config.default.h)
+          }
           $("#muzzer-grid").html()
           $(".tab button").first().addClass("active");
         }
@@ -288,11 +313,7 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
           format: "json"
         }, function(data) {
           if(!data.length) return;
-          if (updateSizer) {
-            console.log(data[0])
-            that.initDefaults(data[0].length, data[0].height)
-            that.updateClosestItem(data[0].image)
-          }
+          that.state.firstElement = data[0]
           var template = $.templates(that.config.item);
           $.each(data, function(index, object) {
             object.price = that.formatPrice(object.price);
@@ -347,10 +368,23 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
             x1 = x1.replace(rgx, '$1' + ' ' + '$2');
           }
           return x1 + x2;
+      },
+      throttle: function(fn, delay) {
+        let scheduledId
+        return function throttled() {
+            const context = this
+            const args = arguments
+            const throttledCall = fn.apply(context, args)
+            if (scheduledId) return
+            scheduledId = setTimeout(() => {
+                throttledCall()
+                clearTimeout(scheduledId)
+            }, delay)
+        }
       }
     }
 
-    var Muzzer = new $.Muzzer("#muzzer");
+    //var Muzzer = new $.Muzzer("#muzzer");
       var config = {
         item: `<li class="product-warp-item nasa-ver-buttons">
               <div class="product type-product purchasable product-type-simple product-item grid wow fadeInUp hover-fade" data-wow="fadeInUp" data-wow-duration="1s" data-wow-delay="0ms">
@@ -373,12 +407,14 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
                 </div>
                 </div>
             </li>`, // Item template with respective placeholders to bind to json
-    priceRange: {from: 2000, to: 100000}, // range of possible values for price
+        priceRange: {from: 2000, to: 100000}, // range of possible values for price
         widthRange: {from: 50, to: 400}, // range of possible values for width
         heightRange: {from: 50, to: 100}, // range of possible values for height
         customGrid: false, // if true you can drop any element with id: "grid" that will be used as result list
         default: {w: 246, h: 100}, // default values for init data load
+        defaultMobile: {w: 246, h: 100},
         imageMinWidth: 100 // minimum allowed image width
       }
-      Muzzer.init(config); // start
+      var Muzzer = new $.Muzzer("#muzzer", config);
+      //Muzzer.init(config); // start
 });
