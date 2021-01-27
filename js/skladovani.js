@@ -55,11 +55,10 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         default: {w: 200, h: 200},
         defaultMobile: {w: 200, h: 200},
         imageMinWidth: 100,
-        //baseUrl: "https://sajzer.muzza.cz/items"
-        baseUrl: "http://localhost:3000/items",
-        suffixFilter: "&categories_like=Pohovky"//^(?!Pohovky)" // "Knihovny|TV stolky|Noční stolky|Botníky|Skříně|Komody"
+        baseUrl: "https://sajzer.muzza.cz/items",
+        //baseUrl: "http://localhost:3000/items",
+        suffixFilter: "&categories_like=Knihovny|TV stolky|Noční stolky|Botníky|Skříně|Komody"//^(?!Pohovky)" // "Knihovny|TV stolky|Noční stolky|Botníky|Skříně|Komody"
       },
-
       vars: {
         selectedColor: "black",
         selectedPrice: {from: 0, to: 100000000},
@@ -149,6 +148,7 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         ruler_horizontal.append(w_row_labels);
         $("#ruler-bottom").append(ruler_horizontal);
         $("#ruler-bottom tr:first-of-type td:first-of-type").css("border-left", "1px solid black")
+
         // -- ruler vertical
         var hNumberOfTicks = Math.floor(that.config.heightRange.to/tickWidth);
         var hTickOffSet = Math.floor($("#outer").innerHeight()/hNumberOfTicks);
@@ -160,7 +160,7 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
 
         for (var i = 0; i < hNumberOfTicks; i++) {
           var row = $("<tr>");
-          var column_label = $("<td>", {class: "unit", height: wTickOffSet});
+          var column_label = $("<td>", {class: "unit", height: hTickOffSet});
           column_label.html((hNumberOfTicks*tickWidth)-(i*tickWidth));
           row.append(column_label);
           var column = $("<td>", {height: hTickOffSet});
@@ -177,7 +177,7 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
           $(".tabContent").hide();
           var tabId = "div#"+$(currentTab).attr("id")
           $(tabId).show();
-          this.triggerEvent($(currentTab).attr("id"))
+          //this.triggerEvent($(currentTab).attr("id"))
       },
       triggerEvent: function(id) {
         switch(id) {
@@ -306,7 +306,7 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
             $(".tab button").first().addClass("active");
           }
 
-          var url = this.config.baseUrl+"?_page="+this.vars.page+"&_limit=15&_sort=length,height,price&_order=desc&length_lte="+this.vars.selectedSize.x+"&height_lte="+this.vars.selectedSize.y+"&price_lte="+this.vars.selectedPrice.to+"&price_gte="+this.vars.selectedPrice.from+this.config.suffixFilter;
+          var url = this.config.baseUrl+"?_page="+this.vars.page+"&_limit=15&_sort=length,height,price&_order=desc,desc,desc&length_lte="+this.vars.selectedSize.x+"&height_lte="+this.vars.selectedSize.y+"&price_lte="+this.vars.selectedPrice.to+"&price_gte="+this.vars.selectedPrice.from+this.config.suffixFilter;
           var that = this;
           // test do not delete
           this.state.currentCall = $.getJSON( url, {
@@ -327,7 +327,7 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         this.loadClosestItem()
       },
       loadClosestItem: function() {
-        var url = this.config.baseUrl+"?_page=1&_limit=1&_sort=length,height,price&_order=desc&length_lte="+this.vars.selectedSize.x+"&height_lte="+this.vars.selectedSize.y+"&price_lte="+this.vars.selectedPrice.to+"&price_gte="+this.vars.selectedPrice.from+this.config.suffixFilter;
+        var url = this.config.baseUrl+"?_page=1&_limit=1&_sort=length,height,price&_order=desc,desc,desc&length_lte="+this.vars.selectedSize.x+"&height_lte="+this.vars.selectedSize.y+"&price_lte="+this.vars.selectedPrice.to+"&price_gte="+this.vars.selectedPrice.from+this.config.suffixFilter;
         var that = this;
         $.getJSON( url, {
           format: "json"
@@ -340,8 +340,8 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
         $("#closest_item").css("max-width", $("#inner").innerWidth());
         $("#closest_item").css("min-width", this.config.imageMinWidth);
         $("#closest_item").css("height", $("#inner").innerHeight());
-        var sizerImage = imageUrl.replace("https://www.muzza.cz/wp-content/uploads", "https://www.muzza.cz/media/crop/0/320")
-        $("#closest_item_image").attr("src", sizerImage)
+        imageUrl = imageUrl.replace("https://www.muzza.cz/wp-content/uploads", "https://www.muzza.cz/media/crop/0/320")
+        $("#closest_item_image").attr("src", imageUrl)
       },
       setupDefaults: function() {
         this.vars.selectedSize.x = $("#m_width").val();
@@ -417,9 +417,9 @@ jQuery(document).ready(function($) { //an IIFE so safely alias jQuery to $
                 </div>
             </li>`, // Item template with respective placeholders to bind to json
         priceRange: {from: 2000, to: 100000}, // range of possible values for price
-        widthRange: {from: 50, to: 400}, // range of possible values for width
-        heightRange: {from: 50, to: 100}, // range of possible values for height
-        customGrid: false, // if true you can drop any element with id: "grid" that will be used as result list
+        widthRange: {from: 50, to: 250}, // range of possible values for width
+        heightRange: {from: 50, to: 250}, // range of possible values for height
+        customGrid: true, // if true you can drop any element with id: "grid" that will be used as result list
         default: {w: 246, h: 100}, // default values for init data load
         defaultMobile: {w: 277, h: 80},
         imageMinWidth: 100 // minimum allowed image width
